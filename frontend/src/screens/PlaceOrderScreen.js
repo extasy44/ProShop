@@ -20,7 +20,7 @@ const PlaceOrderScreen = ({ history }) => {
     );
     cart.shippingPrice = addDecimals(cart.itemsPrice > 100 ? 0 : 10);
     cart.taxPrice = addDecimals(Number((0.1 * cart.itemsPrice).toFixed(2)));
-    cart.totalPrcie = addDecimals(
+    cart.totalPrice = addDecimals(
         Number(cart.itemsPrice) +
             Number(cart.shippingPrice) +
             Number(cart.taxPrice)
@@ -48,7 +48,7 @@ const PlaceOrderScreen = ({ history }) => {
                 itemsPrice: cart.itemsPrice,
                 shippingPrice: cart.shippingPrice,
                 taxPrice: cart.taxPrice,
-                totalPrcie: cart.totalPrcie
+                totalPrice: cart.totalPrice
             })
         );
     };
@@ -132,7 +132,7 @@ const PlaceOrderScreen = ({ history }) => {
                                 </Row>
                                 <Row>
                                     <Col>Total</Col>
-                                    <Col>${cart.totalPrcie}</Col>
+                                    <Col>${cart.totalPrice}</Col>
                                 </Row>
                             </ListGroup.Item>
                             <ListGroup.Item>
