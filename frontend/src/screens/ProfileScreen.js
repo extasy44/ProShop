@@ -22,6 +22,8 @@ const ProfileScreen = ({ location, history }) => {
     const orderListMy = useSelector((state) => state.orderListMy);
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
+    console.log(orders);
+
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
@@ -29,7 +31,6 @@ const ProfileScreen = ({ location, history }) => {
     const { success } = userUpdateProfile;
 
     const redirect = location.search ? location.search.split('=')[1] : '/';
-    console.log('redirect', redirect);
 
     useEffect(() => {
         if (!userInfo) {
