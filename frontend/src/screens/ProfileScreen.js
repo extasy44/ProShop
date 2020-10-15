@@ -7,7 +7,7 @@ import Message from '../components/Message';
 import { getUserDetails, updateUserDetails } from '../actions/userActions';
 import { listMyOrders } from '../actions/orderActions';
 
-const ProfileScreen = ({ location, history }) => {
+const ProfileScreen = ({ history }) => {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const [name, setName] = useState('');
@@ -22,15 +22,11 @@ const ProfileScreen = ({ location, history }) => {
     const orderListMy = useSelector((state) => state.orderListMy);
     const { loading: loadingOrders, error: errorOrders, orders } = orderListMy;
 
-    console.log(orders);
-
     const userLogin = useSelector((state) => state.userLogin);
     const { userInfo } = userLogin;
 
     const userUpdateProfile = useSelector((state) => state.userUpdateProfile);
     const { success } = userUpdateProfile;
-
-    const redirect = location.search ? location.search.split('=')[1] : '/';
 
     useEffect(() => {
         if (!userInfo) {
