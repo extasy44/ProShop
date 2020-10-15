@@ -34,22 +34,23 @@ const OrderScreen = ({ match, history }) => {
     const orderDeliver = useSelector((state) => state.orderDeliver);
     const { loading: loadingDeliver, success: successDeliver } = orderDeliver;
 
+    const addPayPalScript = async () => {
+        const { data: clientId } = await axios.get('/api/config/paypal');
+        const script = document.createElement('script');
+        script.type = 'text/javascript';
+        script.src = `https://paypal.com/sdk/js?client-id=${clientId}&currency=AUD`;
+        script.async = true;
+        script.onload = () => {
+            setSdkReady(true);
+        };
+
+        document.body.appendChild(script);
+    };
+
     useEffect(() => {
         if (!userInfo) {
             history.push('/login');
         }
-        const addPayPalScript = async () => {
-            const { data: clientId } = await axios.get('/api/config/paypal');
-            const script = document.createElement('script');
-            script.type = 'text/javascript';
-            script.src = `https://paypal.com/sdk/js?client-id=${clientId}&currency=AUD`;
-            script.async = true;
-            script.onload = () => {
-                setSdkReady(true);
-            };
-
-            document.body.appendChild(script);
-        };
 
         if (!order || order._id !== orderId || successPay || successDeliver) {
             dispatch({ type: ORDER_PAY_RESET });
@@ -62,7 +63,15 @@ const OrderScreen = ({ match, history }) => {
                 setSdkReady(true);
             }
         }
-    }, [orderId, order, successPay, dispatch, successDeliver]);
+    }, [
+        orderId,
+        order,
+        successPay,
+        dispatch,
+        successDeliver,
+        history,
+        userInfo
+    ]);
 
     const successPaymentHandler = (paymentResult) => {
         console.log(paymentResult);
