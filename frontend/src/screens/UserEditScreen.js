@@ -1,13 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
-import { Row, Col, Button, Form } from 'react-bootstrap';
+import { Button, Form } from 'react-bootstrap';
 import Loader from '../components/Loader';
 import Message from '../components/Message';
 import { getUserDetails, updateUser } from '../actions/userActions';
 import FormContainer from '../components/FormContainer';
 import { USER_UPDATE_RESET } from '../constants/userConstants';
-import { userLoginReducer } from '../reducers/userReducers';
 
 const UserEditScreen = ({ match, history }) => {
     const userId = match.params.id;

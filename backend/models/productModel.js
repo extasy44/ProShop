@@ -22,13 +22,15 @@ const productSchema = mongoose.Schema(
             type: String,
             required: true
         },
+        brand: {
+            type: String
+        },
         image: {
             type: String,
             required: true
         },
         category: {
-            type: String,
-            required: true
+            type: String
         },
         description: {
             type: String,
