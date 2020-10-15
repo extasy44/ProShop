@@ -1,8 +1,9 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import { Row, Col } from 'react-bootstrap';
 
 import Product from '../components/Product';
-import { Row, Col } from 'react-bootstrap';
+import Meta from '../components/Meta';
 import { listProducts } from '../actions/productActions';
 import Message from '../components/Message';
 import Loader from '../components/Loader';
@@ -25,6 +26,11 @@ const HomeScreen = ({ match }) => {
 
     return (
         <>
+            <Meta
+                title="Premium Online Store | ProShop"
+                description="Best price at the best price with fast shipping"
+                keywords=""
+            />
             {!keyword && <ProductCarousel />}
             <h1> All Products</h1>
             {loading ? (
