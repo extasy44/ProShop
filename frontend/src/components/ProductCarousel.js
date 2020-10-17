@@ -31,11 +31,7 @@ const ProductCarousel = () => {
                                 alt={product.name}
                                 fluid
                             />
-                            <Carousel.Caption className="carousel-caption">
-                                <h2>
-                                    {product.name} {product.price}
-                                </h2>
-                            </Carousel.Caption>
+                            <Carousel.Caption className="carousel-caption"></Carousel.Caption>
                         </Link>
                     </Carousel.Item>
                 ))}
